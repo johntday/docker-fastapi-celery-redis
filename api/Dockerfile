@@ -1,4 +1,4 @@
-FROM python:3.9-alpine
+FROM ghcr.io/astral-sh/uv:python3.9-alpine
 
 ENV CELERY_BROKER_URL redis://redis:6379/0
 ENV CELERY_RESULT_BACKEND redis://redis:6379/0
@@ -12,13 +12,14 @@ COPY . /api
 WORKDIR /api
 
 # install requirements
-RUN pip install -U setuptools pip
-RUN pip install -r requirements.txt
+
+#RUN pip install -U setuptools pip
+RUN uv pip install -r requirements.txt
 
 # expose the app port
 EXPOSE 5001
 
-RUN pip install uvicorn
+RUN uv pip install uvicorn
 
 # run the app server in production with gunicorn
 CMD ["uvicorn", "--host", "0.0.0.0", "--port", "5001", "--workers", "3", "app:app"]
