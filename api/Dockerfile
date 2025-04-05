@@ -1,4 +1,4 @@
-FROM python3.9-alpine
+FROM python3.12-alpine
 
 ENV CELERY_BROKER_URL redis://redis:6379/0
 ENV CELERY_RESULT_BACKEND redis://redis:6379/0
