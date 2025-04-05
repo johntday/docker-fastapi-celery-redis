@@ -10,6 +10,6 @@ WORKDIR /queue
 RUN pip install -U setuptools pip
 RUN pip install -r freeze.txt
 
-ENTRYPOINT["celery", "-A", "tasks", "worker", "-l", "info", "-E"]
+CMD ["celery", "-A", "tasks", "worker", "-l", "info", "-E"]
 #    entrypoint: celery
 #    command: -A tasks worker -l info -E
