@@ -11,5 +11,3 @@ RUN pip install -U setuptools pip
 RUN pip install -r freeze.txt
 
 CMD ["celery", "-A", "tasks", "worker", "-l", "info", "-E"]
-#    entrypoint: celery
-#    command: -A tasks worker -l info -E
