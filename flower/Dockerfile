@@ -4,12 +4,14 @@ ENV CELERY_BROKER_URL redis://redis:6379/0
 ENV CELERY_RESULT_BACKEND redis://redis:6379/0
 ENV C_FORCE_ROOT true
 
-COPY . /queue
-WORKDIR /queue
+COPY . /flower
+WORKDIR /flower
 
 RUN pip install -U setuptools pip
 RUN pip install -r freeze.txt
 
-ENTRYPOINT["celery", "-A", "tasks", "worker", "-l", "info", "-E"]
-#    entrypoint: celery
-#    command: -A tasks worker -l info -E
+# expose the app port
+EXPOSE 5555
+
+CMD["celery", "flower", "-A", "tasks"]
+#    command:  ['celery', 'flower', '-A', 'tasks']
