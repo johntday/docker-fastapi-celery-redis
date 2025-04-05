@@ -13,5 +13,4 @@ RUN pip install -r freeze.txt
 # expose the app port
 EXPOSE 5555
 
-CMD["celery", "flower", "-A", "tasks", "--port", "5555"]
-#    command:  ['celery', 'flower', '-A', 'tasks']
+CMD ["celery", "flower", "-A", "tasks", "--port", "5555"]
