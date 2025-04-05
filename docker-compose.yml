@@ -26,7 +26,7 @@ services:
 
   monitor:
     build:
-      context: ./celery-queue
+      context: ./flower
       dockerfile: Dockerfile
     ports:
      - "5555:5555"
